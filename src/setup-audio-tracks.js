@@ -39,7 +39,7 @@ function handleAudioTracksAdded(tech, shaka, tracks) {
     tech.clearTracks(['audio']);
   }
 
-  const currentAudioTrack = tracks[0];
+  const currentAudioTrack = tracks.find(tr => tr.role === "main") || tracks[0];
 
   tracks.forEach((dashTrack, index) => {
     const label = generateLabelFromTrack(dashTrack);
